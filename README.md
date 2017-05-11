@@ -1,31 +1,33 @@
-# Boilerplate for creating React Npm packages with ES2015
-
-The package is based on [npm-base](https://github.com/kadirahq/npm-base) package by [Kadira](https://github.com/kadirahq) which is really great when you want to prepare Npm package. This one is prepared to be used as a starter point for React components which needs to be published on Npm.
-
-It includes linting with [ESLint](http://eslint.org/) and testing with [Mocha](https://mochajs.org/), [Enzyme](http://airbnb.io/enzyme/) and [JSDOM](https://github.com/tmpvar/jsdom).
-
-Also there is of course ES6 transpilation.
+# React Native Translate
 
 ## Usage
 
-1. Clone this repo
-2. Inside cloned repo run `npm install && rm -rf .git && git init` and update `package.json` with your package name.
-3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`. You need to write tests in `__tests__` folder. You need at least Node 4 on your machine to run tests.
-4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`. You can adjust your `.eslintrc` config file.
+1. `yarn add react-native-translate`
+2. Create `json` file with your translation like this: 
+```json
+{
+  "email": "Електронна пошта"
+}
+```
+3. Set localization file in your `index.js`:
+```js
+import ukTranslation from './src/localization/uk.json';
+import { setLocalization } from 'react-native-translate';
+
+setLocalization(ukTranslation);
+```
+4. Use translation: 
+```jsx
+import { translate, Translate } from 'react-native-translate';
+
+translate('email') // returns 'Електронна пошта'
+// Or
+<Translate value="email" /> // renders <Text>Електронна пошта</Text>
+```
+3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`.
+4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`.
 5. If you want to run transpilation to ES5 in `dist` folder: `npm run prepublish` (standard npm hook).
 
-## CSS and preprocessors
-
-For more information check out this thread: [#5](https://github.com/juliancwirko/react-npm-boilerplate/issues/5)
-
-## Blog post about it:
-
-- [Creating React NPM packages with ES2015](http://julian.io/creating-react-npm-packages-with-es2015/)
-
-## Also check out
-
-- [React Alert UI component](https://github.com/juliancwirko/react-s-alert)
-- [React project boilerplate with Webpack, HMR, React Router](https://github.com/juliancwirko/react-boilerplate)
 
 ## License
 
