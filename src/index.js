@@ -1,23 +1,16 @@
-// Demo component
-// this is only example component
-// you can find tests in __test__ folder
-
 import React from 'react';
+import { Text } from 'react-native';
 
-class MyComponent extends React.Component {
-    componentDidMount() {
-        // some logic here - we only test if the method is called
-    }
-    render() {
-        return (
-            <div className="my-component">
-                <i className="icon-test"></i>
-                <i className="icon-test"></i>
-                <i className="icon-test"></i>
-                <button onClick={this.props.handleClick} type="button"></button>
-            </div>
-        )
-    }
-};
+let _localization = {};
 
-export default MyComponent;
+export function setLocalization(localization) {
+    _localization = localization;
+}
+
+export function translate(value) {
+    return _localization[value];
+}
+
+export const Translate = ({ value }) => (
+    <Text>{translate(value)}</Text>
+);
