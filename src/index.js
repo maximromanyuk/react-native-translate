@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 let _localization = {};
 
 export function setLocalization(localization) {
-	if(_localization!= undefined){
+	if(localization!= undefined){
 		_localization = localization;	
 	}
     
